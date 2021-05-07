@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <Authors>Ing. Felix Acevedo</Authors>
+    <Version>2.0.0</Version>
+    <Description>Codigo compartido,para la capa de datos o otro.</Description>
+    <PackageProjectUrl>https://github.com/FelixAcv2/CodeKernelShared</PackageProjectUrl>
+    <PackageIcon>Acv2.png</PackageIcon>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,6 +34,13 @@
   <ItemGroup>
     <ProjectReference Include="..\Acv.Sharedkernel\Acv2.Sharedkernel.csproj" />
     <ProjectReference Include="..\Acv2.SharedKernel.Crosscutting\Acv2.SharedKernel.Crosscutting.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\Downloads\Acv2.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 

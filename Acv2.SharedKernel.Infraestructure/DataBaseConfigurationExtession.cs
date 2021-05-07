@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Acv2.SharedKernel.Infraestructure.Enums;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Acv2.SharedKernel.Infraestructure
 {
@@ -108,7 +109,14 @@ namespace Acv2.SharedKernel.Infraestructure
 
         }
 
-        
+        public static void SetDataBaseConfiguration(this IServiceCollection services, DataBaseTypeConfiguration dataBaseType) {
+
+           // var _options = new DbContextOptionsBuilder();
+
+
+
+
+        }
 
     }
 }

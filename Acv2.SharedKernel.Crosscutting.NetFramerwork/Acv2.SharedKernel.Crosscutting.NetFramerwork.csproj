@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>Codigo compartido, proyecto transversal afecta todas las capas posibles .</Description>
+    <Version>2.0.0</Version>
+    <Authors>Ing. Felix Acevedo</Authors>
+    <PackageProjectUrl>https://github.com/FelixAcv2/CodeKernelShared</PackageProjectUrl>
+    <PackageIcon>Acv2.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,6 +16,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Acv2.SharedKernel.Crosscutting\Acv2.SharedKernel.Crosscutting.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\Downloads\Acv2.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

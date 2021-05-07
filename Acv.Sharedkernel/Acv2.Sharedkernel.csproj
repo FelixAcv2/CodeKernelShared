@@ -2,6 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>2.0.0</Version>
+    <PackageProjectUrl>https://github.com/FelixAcv2/CodeKernelShared</PackageProjectUrl>
+    <PackageIcon>Acv2.png</PackageIcon>
+    <Description>Codigo compartido,para la capa de dominio o otro.</Description>
+    <Authors>Ing. Felix Acevedo</Authors>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\Downloads\Acv2.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
