@@ -13,5 +13,7 @@ namespace Acv2.SharedKernel.Crosscutting.ServicesApi
         Task DeleteAsync(string uri, string authToken = "", string user = null, string userpPassword = null);
         Task<R> PostAsync<T, R>(string uri, T data, string authToken = "", string user = null, string userpPassword = null);
 
+        Task<R> PutAsync<T, R>(string uri, T data, string authToken = "", string user = null, string userpPassword = null);
+
     }
 }

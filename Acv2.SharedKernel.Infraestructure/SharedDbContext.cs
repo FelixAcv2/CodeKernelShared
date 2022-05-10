@@ -360,6 +360,7 @@ namespace Acv2.SharedKernel.Infraestructure
                         case EntityState.Modified:
                             if (property.IsModified)
                             {
+                                
                                 auditEntry.ChangedColumns.Add(propertyName);
                                 auditEntry.AuditType = Enums.AuditType.Update;
                                 auditEntry.OldValues[propertyName] = property.OriginalValue;

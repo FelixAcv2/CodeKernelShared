@@ -214,6 +214,57 @@ namespace Acv2.SharedKernel.Crosscutting.ServicesApi
             }
         }
 
+        public async Task<R> PutAsync<T, R>(string uri, T data, string authToken = "", string user = null, string userpPassword = null)
+        {
+            try
+            {
+                HttpClient httpClient = CreateHttpClient(authToken, user, userpPassword);
+
+                var content = new StringContent(JsonConvert.SerializeObject(data));
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                string jsonResult = string.Empty;
+
+                var responseMessage = await Policy
+                    .Handle<WebException>(ex =>
+                    {
+
+                        Debug.WriteLine($"{ex.GetType().Name + " : " + ex.Message}");
+                        return true;
+                    })
+                    .WaitAndRetryAsync
+                    (
+                        5,
+                        retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
+                    )
+                    .ExecuteAsync(async () => await httpClient.PutAsync(uri, content));
+
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    var json = JsonConvert.DeserializeObject<R>(jsonResult);
+                    return json;
+                }
+
+                if (responseMessage.StatusCode == HttpStatusCode.Forbidden ||
+                    responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    throw new ServiceAuthenticationException(jsonResult);
+                }
+
+                var jsonResult1 = JsonConvert.SerializeObject(data);
+                //var json1 = JsonConvert.DeserializeObject<R>(jsonResult);
+
+                throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"{ e.GetType().Name + " : " + e.Message}");
+                throw;
+            }
+        }
+
         private HttpClient CreateHttpClient(string authToken, string user = null, string userpPassword = null)
         {
             var _httpClient = new HttpClient();

@@ -24,8 +24,8 @@ namespace Acv2.SharedKernel.Crosscutting.Sms
 
                 var _message = await MessageResource.CreateAsync(
                       body: message,
-                      from: new Twilio.Types.PhoneNumber(destine),
-                      to: new Twilio.Types.PhoneNumber(source)
+                      from: new Twilio.Types.PhoneNumber(source),
+                      to: new Twilio.Types.PhoneNumber(destine)
                     );
 
                 return _message.Sid;

@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\CustomerServices\Commands\Validatior\" />
+    <Folder Include="Services\CustomerServices\Querys\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Acv2.SharedKernel.Application.Core\Acv2.SharedKernel.Application.Core.csproj" />
+    <ProjectReference Include="..\Acv2.Sharedkernel.Domain\Domain.csproj" />
+    <ProjectReference Include="..\Acv2.Sharedkernel.Infraescructure\Infraescructure.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -7,18 +7,18 @@ namespace Acv2.SharedKernel.Application.Functionals
     public class Result
     {
         public bool IsSuccess { get; }
-        public string Error { get; }
-        public bool IsFailure => !IsSuccess;
+        public string Message { get; }
+        //public bool IsFailure => !IsSuccess;
 
-        protected Result(bool isSuccess, string error)
+        protected Result(bool isSuccess, string message)
         {
-            if (isSuccess && error != string.Empty)
+            if (isSuccess && message != string.Empty)
                 throw new InvalidOperationException();
-            if (!isSuccess && error == string.Empty)
+            if (!isSuccess && message == string.Empty)
                 throw new InvalidOperationException();
 
             IsSuccess = isSuccess;
-            Error = error;
+            Message = message;
         }
 
         public static Result Fail(string message)
@@ -43,11 +43,11 @@ namespace Acv2.SharedKernel.Application.Functionals
 
         public static Result Combine(params Result[] results)
         {
-            foreach (Result result in results)
-            {
-                if (result.IsFailure)
-                    return result;
-            }
+            //foreach (Result result in results)
+            //{
+            //    if (result.IsFailure)
+            //        return result;
+            //}
 
             return Ok();
         }
@@ -56,22 +56,22 @@ namespace Acv2.SharedKernel.Application.Functionals
 
     public class Result<T> : Result
     {
-        private readonly T _value;
-        public T Value
+        private readonly T _data;
+        public T Data
         {
             get
             {
                 //if (!IsSuccess)
                 //    throw new InvalidOperationException();
 
-                return _value;
+                return _data;
             }
         }
 
         protected internal Result(T value, bool isSuccess, string error)
             : base(isSuccess, error)
         {
-            _value = value;
+            _data = value;
         }
     }
 }
