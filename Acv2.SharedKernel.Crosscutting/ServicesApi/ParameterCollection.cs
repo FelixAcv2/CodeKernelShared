@@ -8,9 +8,9 @@ namespace Acv2.SharedKernel.Crosscutting.ServicesApi
 {
   public  class ParameterCollection
     {
-        private Dictionary<string, string> _parms = new Dictionary<string, string>();
+        private Dictionary<string, object> _parms = new Dictionary<string, object>();
 
-        public void Add(string key, string val)
+        public void Add(string key, object val)
         {
 
             if (_parms.ContainsKey(key))
